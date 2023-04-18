@@ -1,0 +1,19 @@
+{
+    "pages": [
+        {
+            "path": "element_a/",
+            "title": "What Is TransCon™ Technology?",
+            "content": "We have a large library of TransCon linkers that are applicable to various types of parent drugs, and that can be tailored and customized to provide the desired pharmacokinetic profile for each individual product candidate."
+        },
+        {
+            "path": "element_b/",
+            "title": "How Does It Work?",
+            "content": "When bound, the carrier inactivates and shields the parent drug from clearance. When injected into the body, physiologic conditions (i.e. pH and temperature) initiate the release of the active parent drug in a predictable manner. "
+        },
+        {
+            "path": "element_c/",
+            "title": "Endocrinology Rare Disease Pipeline",
+            "content": "An investigational once-weekly treatment for adult growth hormone deficiency (AGHD) designed to release somatropin (hGH)."
+        }
+    ]
+}
