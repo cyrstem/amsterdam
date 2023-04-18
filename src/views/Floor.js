@@ -18,7 +18,7 @@ export class Floor extends Group {
     async initMesh() {
         const { loadTexture } = WorldController;
         // console.log('hello')
-        this.geometry = new PlaneGeometry(50, 50);
+        this.geometry = new PlaneGeometry(10, 10);
         const map = await loadTexture('assets/textures/background.jpg');
         map.wrapS = RepeatWrapping;
         map.wrapT = RepeatWrapping;

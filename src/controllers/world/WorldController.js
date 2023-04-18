@@ -13,10 +13,9 @@ import { getFrustum, getFullscreenTriangle } from '../../utils/world/Utils3D.js'
 export class WorldController {
     static init() {
         this.initWorld();
-        this.initLights();
+         this.initLights();
         this.initLoaders();
-        //this.initControls();
-        this.initEnvironment();
+        // this.initEnvironment();
         this.addListeners();
     }
 
@@ -25,18 +24,23 @@ export class WorldController {
             powerPreference: 'high-performance',
             stencil: false,
             antialias: true,
-            alpha: false
+            // alpha: false
         });
         this.element = this.renderer.domElement;
-        // this.element = new Interface(this.renderer.domElement);
 
          // Shadows
-         this.renderer.shadowMap.enabled = true;
-         this.renderer.shadowMap.type = BasicShadowMap;
+        //  this.renderer.shadowMap.enabled = true;
+        //  this.renderer.shadowMap.type = BasicShadowMap;
  
          // Tone mapping
          this.renderer.toneMapping =ACESFilmicToneMapping;
-         this.renderer.toneMappingExposure = 1.4;
+         this.renderer.toneMappingExposure = 1;
+
+          // Global 3D camera
+        this.camera = new PerspectiveCamera(30);
+        this.camera.near = 0.5;
+        this.camera.far = 40;
+        this.camera.position.z = 8;
 
         // 3D scene
         this.scene = new Scene();
@@ -53,11 +57,17 @@ export class WorldController {
         // Global geometries
         this.screenTriangle = getFullscreenTriangle();
 
-        // Global uniforms
-        this.resolution = new Uniform(new Vector2());
-        this.aspect = new Uniform(1);
-        this.time = new Uniform(0);
-        this.frame = new Uniform(0);
+        // // Global uniforms
+        // this.resolution = new Uniform(new Vector2());
+        // this.aspect = new Uniform(1);
+        // this.time = new Uniform(0);
+        // this.frame = new Uniform(0);
+
+        this.resolution = { value: new Vector2() };
+        this.texelSize = { value: new Vector2() };
+        this.aspect = { value: 1 };
+        this.time = { value: 0 };
+        this.frame = { value: 0 };
           // Global settings
           this.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
     }
@@ -83,9 +93,9 @@ export class WorldController {
     }
 
 
-    static async initEnvironment() {
-       this.scene.environment = await this.loadEnvironmentTexture('assets/textures/env.jpg');
-    }
+    // static async initEnvironment() {
+    //    this.scene.environment = await this.loadEnvironmentTexture('assets/textures/env.jpg');
+    // }
 
 
     static addListeners() {
@@ -124,11 +134,11 @@ export class WorldController {
 
     static loadEnvironmentTexture = path => this.environmentLoader.loadAsync(path);
 
-    static getBufferGeometry = (path, callback) => this.bufferGeometryLoader.load(path, callback);
+    // static getBufferGeometry = (path, callback) => this.bufferGeometryLoader.load(path, callback);
 
-    static loadBufferGeometry = path => this.bufferGeometryLoader.loadAsync(path);
+    // static loadBufferGeometry = path => this.bufferGeometryLoader.loadAsync(path);
 
     static loadResource = path =>this.gltfLoader.loadAsync(path);
 
-    static getFrustum = offsetZ => getFrustum(this.camera, offsetZ);
+    // static getFrustum = offsetZ => getFrustum(this.camera, offsetZ);
 }

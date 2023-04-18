@@ -9,6 +9,8 @@ export class Fox extends Group{
         //this.position.x = -5.5;
         
         this.initCamera();
+        //this.addEventListener()
+        
        
     }
     initCamera() {
@@ -27,7 +29,7 @@ export class Fox extends Group{
         const model = resource.scene.children[0];
         this.mixer = new AnimationMixer(resource.scene)
 
-        this.action = this.mixer.clipAction(resource.animations[1])
+        this.action = this.mixer.clipAction(resource.animations[0])
        
         model.scale.multiplyScalar(0.01);
 
@@ -69,8 +71,7 @@ export class Fox extends Group{
 
     }
 
-   
- 
+  
     ready = () => Promise.all([
         this.initResource()
     ]); 
