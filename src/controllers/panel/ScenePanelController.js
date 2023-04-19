@@ -12,7 +12,7 @@ export class ScenePanelController {
         this.view = view;
         //this.points = [];
 
-        //this.initPanel();
+        this.initPanel();
 
         //this.addListeners();
     }
@@ -33,10 +33,10 @@ export class ScenePanelController {
     };
 
     static ready = () => this.view.ready();
-    // static initPanel() {
+    static initPanel() {
 
-    //     const {cube,cylinder,sphere} = this.view;
-    //    //console.log(this.view)
+        const {cube} = this.view;
+       console.log(this.view)
     //     ///console.log(this.view.molecule)
     //     // const modelViews = [molecule]
     //      const views = [cube,cylinder,sphere];
@@ -66,7 +66,7 @@ export class ScenePanelController {
     //     // const material  = views[0].children[0].children[1].material
     //     // console.log(material)
 
-    // }
+    }
 
     // static addListeners() {
 

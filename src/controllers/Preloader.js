@@ -6,7 +6,6 @@ import { MultiLoader } from '../loaders/MultiLoader.js';
 import { FontLoader } from '../loaders/FontLoader.js';
 import { AssetLoader } from '../loaders/AssetLoader.js';
 import { Stage } from '../utils/Stage.js';
-import { PreloaderView } from '../views/PreloaderView.js';
 
 export class Preloader {
     static init() {
@@ -39,20 +38,20 @@ export class Preloader {
     }
 
     static initView() {
-        this.view = new PreloaderView();
-        Stage.add(this.view);
+        // this.view = new PreloaderView();
+        // Stage.add(this.view);
     }
 
     static async initLoader() {
-        this.view.animateIn();
+        //this.view.animateIn();
 
-        let assets = Config.ASSETS.slice();
+        let assets = Config.ASSETS;
 
-        if (Device.mobile) {
-            assets = assets.filter(path => !/desktop/.test(path));
-        } else {
-            assets = assets.filter(path => !/mobile/.test(path));
-        }
+        // if (Device.mobile) {
+        //     assets = assets.filter(path => !/desktop/.test(path));
+        // } else {
+        //     assets = assets.filter(path => !/mobile/.test(path));
+        // }
 
         this.loader = new MultiLoader();
         this.loader.load(new FontLoader());
@@ -69,13 +68,13 @@ export class Preloader {
     }
 
     static addListeners() {
-        this.loader.events.on(Events.PROGRESS, this.view.onProgress);
-        this.view.events.on(Events.COMPLETE, this.onComplete);
+        //this.loader.events.on(Events.PROGRESS, this.view.onProgress);
+        //this.view.events.on(Events.COMPLETE, this.onComplete);
     }
 
     static removeListeners() {
-        this.loader.events.off(Events.PROGRESS, this.view.onProgress);
-        this.view.events.off(Events.COMPLETE, this.onComplete);
+        //this.loader.events.off(Events.PROGRESS, this.view.onProgress);
+        //this.view.events.off(Events.COMPLETE, this.onComplete);
     }
 
     /**
