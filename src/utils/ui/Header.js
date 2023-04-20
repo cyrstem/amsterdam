@@ -33,7 +33,7 @@ export class Header extends Interface {
             x: -10,
             opacity: 0
         });
-        this.add(this.info);
+        //this.add(this.info);
     }
 
     /**
@@ -45,6 +45,6 @@ export class Header extends Interface {
     };
 
     animateOut = () => {
-        this.info.tween({ opacity: 0 }, 500, 'easeInCubic');
+       this.info.tween({ opacity: 0 }, 500, 'easeInCubic');
     };
 }
