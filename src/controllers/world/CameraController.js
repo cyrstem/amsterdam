@@ -1,6 +1,5 @@
 import { Vector2, Vector3 } from 'three';
 import { UI } from '../../utils/ui/UI.js';
-import { Details } from '../../views/Details.js';
 import { tween, clearTween } from '../../tween/Tween.js';
 import { Device } from '../../config/Device.js';
 import { Config } from '../../config/Config.js';

@@ -13,45 +13,41 @@ import { ScenePanelController } from './ScenePanelController.js';
 import { brightness, getKeyByValue, radToDeg, degToRad } from '../../utils/Utils.js';
 
 export class PanelController {
-    static init( scene, camera, view, ui) {
+    static init( ui) {
         //this.renderer = renderer;
-        this.scene = scene;
-        this.camera = camera;
-        this.view = view;
-        this.ui = ui;
+        // this.scene = scene;
+        // this.camera = camera;
+        // this.view = view;
+        // this.ui = ui;
         //console.log('hello')
 
        // this.lastInvert = null;
 
         // this.initViews();
-        this.initControllers();
+        // this.initControllers();
+        this.ui =ui;
         this.initPanel();
         //this.setInvert(this.scene.background);
     }
 
-    static initViews() {
-        this.ui = new UI({ fps: true });
-        this.ui.animateIn();
-        Stage.add(this.ui);
-    }
+    // static initViews() {
+    //     this.ui = new UI({ fps: true });
+    //     this.ui.animateIn();
+    //     Stage.add(this.ui);
+    // }
 
-    static initControllers() {
-        Point3D.init(this.scene, this.camera, {
-            root: Stage,
-            container: this.ui,
-            debug:Config.DEBUG
-        });
+    // static initControllers() {
+    //     Point3D.init(this.scene, this.camera, {
+    //         root: Stage,
+    //         container: this.ui,
+    //         debug:Config.DEBUG
+    //     });
 
-        ScenePanelController.init(this.view);
-    }
+    //     ScenePanelController.init(this.view);
+    // }
 
     static initPanel() {
-        const { hBlurMaterial, vBlurMaterial, cameraMotionBlurMaterial, luminosityMaterial, bloomCompositeMaterial, compositeMaterial } = RenderManager;
-
-        const debugOptions = {
-            Off: false,
-            Debug: true
-        };
+        const { luminosityMaterial, bloomCompositeMaterial, transitionMaterial } = RenderManager;
 
         const items = [
             {
@@ -62,82 +58,11 @@ export class PanelController {
             },
             {
                 type: 'slider',
-                label: 'Focus',
-                min: 0,
-                max: 1,
-                step: 0.01,
-                value: RenderManager.blurFocus,
-                callback: value => {
-                    hBlurMaterial.uniforms.uFocus.value = value;
-                    vBlurMaterial.uniforms.uFocus.value = value;
-                    compositeMaterial.uniforms.uFocus.value = value;
-                }
-            },
-            {
-                type: 'slider',
-                label: 'Rotate',
-                min: 0,
-                max: 360,
-                step: 0.3,
-                value: radToDeg(RenderManager.blurRotation),
-                callback: value => {
-                    value = degToRad(value);
-                    hBlurMaterial.uniforms.uRotation.value = value;
-                    vBlurMaterial.uniforms.uRotation.value = value;
-                    compositeMaterial.uniforms.uRotation.value = value;
-                }
-            },
-            {
-                type: 'slider',
-                label: 'Blur',
-                min: 0,
-                max: 2,
-                step: 0.01,
-                value: RenderManager.blurFactor,
-                callback: value => {
-                    RenderManager.blurFactor = value;
-                }
-            },
-            {
-                type: 'slider',
-                label: 'Camera',
-                min: 0,
-                max: 1,
-                step: 0.01,
-                value: cameraMotionBlurMaterial.uniforms.uVelocityFactor.value,
-                callback: value => {
-                    cameraMotionBlurMaterial.uniforms.uVelocityFactor.value = value;
-                }
-            },
-            {
-                type: 'slider',
-                label: 'Chroma',
-                min: 0,
-                max: 2,
-                step: 0.01,
-                value: compositeMaterial.uniforms.uDistortion.value,
-                callback: value => {
-                    compositeMaterial.uniforms.uDistortion.value = value;
-                }
-            },
-            {
-                type: 'list',
-                list: debugOptions,
-                value: getKeyByValue(debugOptions, vBlurMaterial.uniforms.uDebug.value),
-                callback: value => {
-                    vBlurMaterial.uniforms.uDebug.value = debugOptions[value];
-                }
-            },
-            {
-                type: 'divider'
-            },
-            {
-                type: 'slider',
                 label: 'Thresh',
                 min: 0,
                 max: 1,
                 step: 0.01,
-                value: RenderManager.luminosityThreshold,
+                value: luminosityMaterial.uniforms.uThreshold.value,
                 callback: value => {
                     luminosityMaterial.uniforms.uThreshold.value = value;
                 }
@@ -148,7 +73,7 @@ export class PanelController {
                 min: 0,
                 max: 1,
                 step: 0.01,
-                value: RenderManager.luminositySmoothing,
+                value: luminosityMaterial.uniforms.uSmoothing.value,
                 callback: value => {
                     luminosityMaterial.uniforms.uSmoothing.value = value;
                 }
@@ -157,7 +82,7 @@ export class PanelController {
                 type: 'slider',
                 label: 'Strength',
                 min: 0,
-                max: 1,
+                max: 2,
                 step: 0.01,
                 value: RenderManager.bloomStrength,
                 callback: value => {
@@ -176,6 +101,56 @@ export class PanelController {
                     RenderManager.bloomRadius = value;
                     bloomCompositeMaterial.uniforms.uBloomFactors.value = RenderManager.bloomFactors();
                 }
+            },
+            {
+                type: 'divider'
+            },
+            {
+                type: 'slider',
+                label: 'Size',
+                min: 0,
+                max: 1,
+                step: 0.01,
+                value: transitionMaterial.uniforms.uSize.value,
+                callback: value => {
+                    transitionMaterial.uniforms.uSize.value = value;
+                }
+            },
+            {
+                type: 'slider',
+                label: 'Zoom',
+                min: 0,
+                max: 100,
+                step: 0.2,
+                value: transitionMaterial.uniforms.uZoom.value,
+                callback: value => {
+                    transitionMaterial.uniforms.uZoom.value = value;
+                }
+            },
+            {
+                type: 'slider',
+                label: 'Chroma',
+                min: 0,
+                max: 2,
+                step: 0.01,
+                value: transitionMaterial.uniforms.uColorSeparation.value,
+                callback: value => {
+                    transitionMaterial.uniforms.uColorSeparation.value = value;
+                }
+            },
+            {
+                type: 'divider'
+            },
+            {
+                type: 'slider',
+                label: 'Lerp',
+                min: 0,
+                max: 1,
+                step: 0.01,
+                value: RenderManager.smooth.lerpSpeed,
+                callback: value => {
+                    RenderManager.smooth.lerpSpeed = value;
+                }
             }
         ];
 
@@ -183,27 +158,4 @@ export class PanelController {
             this.ui.addPanel(new PanelItem(data));
         });
     }
-
-    /**
-     * Public methods
-     */
-
-    // static setInvert = value => {
-    //     const invert = brightness(value) > 0.9; // Light colour is inverted
-
-    //     if (invert !== this.lastInvert) {
-    //         this.lastInvert = invert;
-
-    //         Stage.events.emit(Events.INVERT, { invert });
-    //     }
-    // };
-
-    static update = time => {
-        if (!this.ui) {
-            return;
-        }
-
-        Point3D.update(time);
-        this.ui.update();
-    };
 }

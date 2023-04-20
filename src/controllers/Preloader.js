@@ -55,7 +55,7 @@ export class Preloader {
         }
 
         this.loader = new MultiLoader();
-        this.loader.load(new FontLoader());
+        this.loader.load(new FontLoader(['Roboto Mono']));
         this.loader.load(new AssetLoader(assets));
         this.loader.add(2);
 
@@ -90,6 +90,7 @@ export class Preloader {
         await this.view.animateOut();
         this.view = this.view.destroy();
 
-        //this.app.animateIn();
+        this.app.animateIn();
+        //this.app.start();
     };
 }

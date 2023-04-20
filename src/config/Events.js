@@ -12,6 +12,6 @@ export class Events {
     static HOVER = 'hover';
     static CLICK = 'click';
 
-    static COLOR_PICKER = 'color_picker';
-    static INVERT = 'invert';
+    // static COLOR_PICKER = 'color_picker';
+    // static INVERT = 'invert';
 }

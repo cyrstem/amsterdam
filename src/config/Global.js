@@ -1,4 +1,4 @@
 export class Global {
-    static PAGES =[];
-    static PAGE_INDEX = 0;
+    static SECTIONS =[];
+    static SECTION_INDEX = 0;
 }
