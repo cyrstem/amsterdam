@@ -7,17 +7,16 @@ export class Floor extends Group {
 
     constructor() {
         super();
-        //this.initReflector();
+        this.initReflector();
         this.initMesh();
 
     }
     initReflector() {
-        //this.reflector = new Reflector({ blurIterations: 6 });
+        this.reflector = new Reflector({ blurIterations: 6 });
     }
 
     async initMesh() {
         const { loadTexture } = WorldController;
-        // console.log('hello')
         this.geometry = new PlaneGeometry(10, 10);
         const map = await loadTexture('assets/textures/background.jpg');
         map.wrapS = RepeatWrapping;
@@ -55,7 +54,7 @@ export class Floor extends Group {
     resize = (width, height) => {
         height = 1024;
 
-        //this.reflector.setSize(width, height);
+        this.reflector.setSize(width, height);
     };
 
 

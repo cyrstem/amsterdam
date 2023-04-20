@@ -1,6 +1,6 @@
 import { BoxGeometry, Group, Mesh, MeshStandardMaterial } from 'three';
 import { Floor } from '../views/Floor.js';
-import { Cube } from './Cube.js';
+// import { Cube } from './Cube.js';
 import { Fox } from './gltf/Fox.js';
 
 export class SceneView extends Group {
@@ -13,7 +13,7 @@ export class SceneView extends Group {
     initViews() {
         this.fox = new Fox();
         this.add(this.fox);
-        this.cube = new Cube();
+        // this.cube = new Cube();
         this.floor = new Floor();
         this.add(this.floor)
     }
@@ -25,7 +25,7 @@ export class SceneView extends Group {
      */
 
      resize = (width, height) => {
-        this.cube.resize(width,height);
+        // this.cube.resize(width,height);
         this.floor.resize(width, height);
     };
 //need to figure it out how to pass time
@@ -37,7 +37,7 @@ export class SceneView extends Group {
 
     ready = () => Promise.all([
         this.fox.initModel(),
-        this.cube.initMesh(),
+        // this.cube.initMesh(),
       
         this.floor.initMesh(),
     ]);

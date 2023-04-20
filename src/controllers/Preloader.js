@@ -90,6 +90,6 @@ export class Preloader {
         await this.view.animateOut();
         this.view = this.view.destroy();
 
-        //this.app.animateIn();
+        this.app.animateIn();
     };
 }

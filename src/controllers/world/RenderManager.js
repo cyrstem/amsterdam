@@ -29,11 +29,11 @@ export class RenderManager {
         this.luminositySmoothing = 1.;
         this.bloomStrength = 0.3;
         this.bloomRadius = 0.2;
-        // this.blurFocus = Device.mobile ? 0.5 : 0.25;
-        // this.blurRotation = Device.mobile ? 0 : degToRad(75);
-        // this.blurFactor = 0.6;
-        // this.blurVelocityFactor = 0.1;
-        // this.enabled = true;
+        this.blurFocus = Device.mobile ? 0.5 : 0.25;
+        this.blurRotation = Device.mobile ? 0 : degToRad(75);
+        this.blurFactor = 0.6;
+        this.blurVelocityFactor = 0.1;
+        this.enabled = true;
         this.initRenderer();
     }
 
