@@ -11,8 +11,9 @@ import { RenderManager } from './world/RenderManager.js';
 import { PanelController } from './panel/PanelController.js';
 import { UI } from '../utils/ui/UI.js';
 import { Stage } from '../utils/Stage.js';
-import { Data } from '../views/Data.js';
+// import { Data } from '../views/Data.js';
 import { SceneView } from '../views/SceneView.js';
+import {Container} from '../utils/ui/Container.js';
 import { Global } from '../config/Global.js';
 import { Device } from '../config/Device.js';
 import { ticker } from '../tween/Ticker.js';
@@ -39,21 +40,19 @@ export class App {
 
 
         this.initPanel();
+
         this.animateIn();
     }
 
 
     static initLoader() {
         this.assetLoader = new AssetLoader();
-        //this.assetLoader.setPath(Config.PATH);
+        this.assetLoader.setPath(Config.PATH);
     }
 
     static initStage() {
         Stage.init(document.querySelector('#root'));
         Stage.css({ opacity: 0 });
-
-        // Stage.root = document.querySelector(':root');
-        // Stage.rootStyle = getComputedStyle(Stage.root);
     }
 
     static initWorld() {
@@ -86,12 +85,12 @@ export class App {
     }
 
     static async loadData() {
-        const data = await assetLoader.loadData('assets/data/data.json');
+        const data = await this.assetLoader.loadData('assets/data/data.json');
+        console.log(data)
+        // data.pages.forEach(item => {
+        //     Global.SECTIONS.push(item);
 
-        data.pages.forEach(item => {
-            Global.SECTIONS.push(item);
-
-        });
+        // });
 
         Data.init();
     }

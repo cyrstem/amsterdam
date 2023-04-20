@@ -5,6 +5,7 @@ import { Assets } from '../loaders/Assets.js';
 import { MultiLoader } from '../loaders/MultiLoader.js';
 import { FontLoader } from '../loaders/FontLoader.js';
 import { AssetLoader } from '../loaders/AssetLoader.js';
+import { PreloaderView } from '../views/PreloaderView.js';
 import { Stage } from '../utils/Stage.js';
 
 export class Preloader {
@@ -38,12 +39,12 @@ export class Preloader {
     }
 
     static initView() {
-        // this.view = new PreloaderView();
-        // Stage.add(this.view);
+        this.view = new PreloaderView();
+        Stage.add(this.view);
     }
 
     static async initLoader() {
-        //this.view.animateIn();
+        this.view.animateIn();
 
         let assets = Config.ASSETS;
 
@@ -68,13 +69,13 @@ export class Preloader {
     }
 
     static addListeners() {
-        //this.loader.events.on(Events.PROGRESS, this.view.onProgress);
-        //this.view.events.on(Events.COMPLETE, this.onComplete);
+        this.loader.events.on(Events.PROGRESS, this.view.onProgress);
+        this.view.events.on(Events.COMPLETE, this.onComplete);
     }
 
     static removeListeners() {
-        //this.loader.events.off(Events.PROGRESS, this.view.onProgress);
-        //this.view.events.off(Events.COMPLETE, this.onComplete);
+        this.loader.events.off(Events.PROGRESS, this.view.onProgress);
+        this.view.events.off(Events.COMPLETE, this.onComplete);
     }
 
     /**
@@ -89,6 +90,6 @@ export class Preloader {
         await this.view.animateOut();
         this.view = this.view.destroy();
 
-        //this.app.animateIn();
+        this.app.animateIn();
     };
 }
