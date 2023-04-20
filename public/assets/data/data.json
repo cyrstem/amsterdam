@@ -11,6 +11,10 @@
         {
             "path": "abstract_cube/",
             "title": "Abstract Cube"
+        },
+        {
+            "path": "plane_mesh/",
+            "title": "Plane Mesh"
         }
     ]
 }
