@@ -1,19 +1,16 @@
 {
     "pages": [
         {
-            "path": "element_a/",
-            "title": "What Is TransCon™ Technology?"
-            
+            "path": "dark_planet/",
+            "title": "Dark Planet"
         },
         {
-            "path": "element_b/",
-            "title": "How Does It Work?"
-           
+            "path": "floating_crystal/",
+            "title": "Floating Crystal"
         },
         {
-            "path": "element_c/",
-            "title": "Endocrinology Rare Disease Pipeline"
-           
+            "path": "abstract_cube/",
+            "title": "Abstract Cube"
         }
     ]
 }

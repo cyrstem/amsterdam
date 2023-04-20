@@ -1,20 +1,14 @@
 import { Mesh, OrthographicCamera, Scene, Vector2, WebGLRenderTarget, DepthTexture, Vector3, Matrix4 , MathUtils} from 'three';
 // //add to control twee
 import { Device } from '../../config/Device.js';
-// import { degToRad } from '../../utils/Utils.js';
-// import { tween, clearTween } from '../../tween/Tween.js';
+
 import { SmoothViews } from '../../utils/extras/SmoothViews';
 import { Stage } from '../../utils/Stage.js';
 import { WorldController } from './WorldController.js';
-// import { FXAAMaterial } from '../../materials/FXAAMaterial.js';
 import { LuminosityMaterial } from '../../materials/LuminosityMaterial.js';
 import { UnrealBloomBlurMaterial } from '../../materials/UnrealBloomBlurMaterial.js';
 import { BloomCompositeMaterial } from '../../materials/BloomCompositeMaterial.js';
 import { SceneCompositeMaterial } from '../../materials/SceneCompositeMaterial.js';
-// import { CompositeMaterial } from '../../materials/CompositeMaterial.js'
-// import { delayedCall } from '../../tween/Tween.js';
-// import { floorPowerOfTwo, lerp } from '../../utils/Utils.js';
-// import { CameraMotionBlurMaterial } from '../../materials/CameraMotionBlurMaterial';
 import { BlurMaterial } from '../../materials/BlurMaterial';
 import { TransitionMaterial} from'../../materials/TransitionMaterial.js';
 const BlurDirectionX = new Vector2(1, 0);
@@ -27,13 +21,13 @@ export class RenderManager {
         this.container = container;
         this.sections = container.children;
 
-        this.luminosityThreshold = 0.9;
+        this.luminosityThreshold = 0.1;
         this.luminositySmoothing = 1;
         this.bloomStrength = 0.3;
         this.bloomRadius = 0.2;
         this.animatedIn = false;
 
-        console.log(this.views)
+        //console.log(this.views)
         this.initRenderer();
 
         this.addListeners();

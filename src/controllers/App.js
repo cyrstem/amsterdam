@@ -45,12 +45,12 @@ export class App {
 
     static initLoader() {
         this.assetLoader = new AssetLoader();
-        this.assetLoader.load(Config.PATH);
+        this.assetLoader.setPath(Config.PATH);
     }
 
     static initStage() {
         Stage.init(document.querySelector('#root'));
-        Stage.css({ opacity: 1 });
+        Stage.css({ opacity: 0 });
     }
 
     static initWorld() {
@@ -84,7 +84,7 @@ export class App {
 
     static async loadData() {
         const data = await this.assetLoader.loadData('/assets/data/data.json');
-        console.log(data)
+        //console.log(data)
         data.pages.forEach(item => {
             Global.SECTIONS.push(item);
 

@@ -12,6 +12,7 @@ import { UITitle } from '../../views/UITitle.js';
 import { Global } from '../../config/Global.js';
 import { Config } from '../../config/Config.js';
 import { ticker } from '../../tween/Ticker.js';
+import { RenderManager } from '../../controllers/world/RenderManager.js';
 
 
 export class UI extends Interface {

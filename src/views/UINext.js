@@ -3,7 +3,6 @@ import { Stage } from "../utils/Stage";
 import { Events } from "../config/Events";
 import { Config } from "../config/Config";
 import { Global } from "../config/Global";
-
 import { Data } from "./Data";
 
 export class UINext extends Interface {
@@ -11,7 +10,7 @@ export class UINext extends Interface {
         super('.next');
 
         this.initHTML();
-
+        
         this.addListeners();
     }
 
@@ -69,7 +68,7 @@ export class UINext extends Interface {
         const item = Data.getNext();
         
 
-        Data.setSection(item.index);
-        //console.log()
+        //Data.setSection(item.index);
+       
     };
 }
