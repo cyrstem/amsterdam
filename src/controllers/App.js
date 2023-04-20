@@ -1,6 +1,5 @@
 import { Config } from '../config/Config.js';
 import { Events } from '../config/Events.js';
-// import { Assets } from '../loaders/Assets.js';
 import { AssetLoader } from '@alienkitty/space.js/three';
 import { Global } from '../config/Global.js';
 import { WorldController } from './world/WorldController.js';
@@ -8,10 +7,10 @@ import { WorldController } from './world/WorldController.js';
 import { SceneController } from './world/SceneController.js';
 
 import { RenderManager } from './world/RenderManager.js';
-// import { PanelController } from './panel/PanelController.js';
+import { PanelController } from './panel/PanelController.js';
 import { UI } from '../utils/ui/UI.js';
 import { Stage } from '../utils/Stage.js';
-// // import { Data } from '../views/Data.js';
+import { Data } from '../views/Data.js';
 import { SceneView } from '../views/SceneView.js';
 import {Container} from '../utils/ui/Container.js';
 import { ticker } from '../tween/Ticker.js';
@@ -51,7 +50,7 @@ export class App {
 
     static initStage() {
         Stage.init(document.querySelector('#root'));
-        Stage.css({ opacity: 0 });
+        Stage.css({ opacity: 1 });
     }
 
     static initWorld() {
@@ -91,7 +90,7 @@ export class App {
 
         });
 
-       // Data.init();
+       Data.init();
     }
 
     static addListeners() {
@@ -110,7 +109,7 @@ export class App {
         const dpr = window.devicePixelRatio;
 
         WorldController.resize(width, height, dpr);
-        SceneController.resize(width, height);
+        SceneController.resize(width, height,dpr);
         RenderManager.resize(width, height, dpr);
     };
 
@@ -126,7 +125,7 @@ export class App {
      * Public methods
      */
 
-    static start = () => {
+    static animateIn = () => {
         SceneController.animateIn();
         RenderManager.animateIn();
         this.ui.animateIn();

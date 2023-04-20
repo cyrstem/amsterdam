@@ -1,6 +1,7 @@
-import { Color, Group, Mesh, MeshStandardMaterial } from 'three';
+import { Color, Group, Mesh, MeshStandardMaterial,RepeatWrapping } from 'three';
 import { Config } from '../../config/Config';
-
+import {FloatingCrystal} from '../FloatingCrystal';
+import { RenderScene } from '../RenderScene';
 
 export class FloatingCrystalScene extends RenderScene {
     constructor() {

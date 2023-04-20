@@ -2,6 +2,7 @@ import { Global } from "../config/Global";
 import { Config } from "../config/Config";
 import { Stage } from "../utils/Stage";
 import { Events } from "../config/Events";
+import { RenderManager } from "../controllers/world/RenderManager";
 
 export class Data {
     static init() {

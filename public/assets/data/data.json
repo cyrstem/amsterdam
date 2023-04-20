@@ -1,0 +1,19 @@
+{
+    "pages": [
+        {
+            "path": "element_a/",
+            "title": "What Is TransCon™ Technology?"
+            
+        },
+        {
+            "path": "element_b/",
+            "title": "How Does It Work?"
+           
+        },
+        {
+            "path": "element_c/",
+            "title": "Endocrinology Rare Disease Pipeline"
+           
+        }
+    ]
+}

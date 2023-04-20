@@ -67,7 +67,9 @@ export class UINext extends Interface {
         e.preventDefault();
 
         const item = Data.getNext();
+        
 
         Data.setSection(item.index);
+        //console.log()
     };
 }

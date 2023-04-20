@@ -1,6 +1,6 @@
 import { Interface } from "../Interface";
 import { Global } from "../../config/Global";
-import { Section } from './Section';
+ import { Section } from './Section';
 
 export class Container extends Interface {
     constructor() {

@@ -1,21 +1,20 @@
 import { Mesh, OrthographicCamera, Scene, Vector2, WebGLRenderTarget, DepthTexture, Vector3, Matrix4 , MathUtils} from 'three';
-//add to control twee
+// //add to control twee
 import { Device } from '../../config/Device.js';
-import { degToRad } from '../../utils/Utils.js';
-import { tween, clearTween } from '../../tween/Tween.js';
-import { SmoothViews } from '@alienkitty/space.js'
+// import { degToRad } from '../../utils/Utils.js';
+// import { tween, clearTween } from '../../tween/Tween.js';
+import { SmoothViews } from '../../utils/extras/SmoothViews';
 import { Stage } from '../../utils/Stage.js';
 import { WorldController } from './WorldController.js';
-import { FXAAMaterial } from '../../materials/FXAAMaterial.js';
+// import { FXAAMaterial } from '../../materials/FXAAMaterial.js';
 import { LuminosityMaterial } from '../../materials/LuminosityMaterial.js';
-
 import { UnrealBloomBlurMaterial } from '../../materials/UnrealBloomBlurMaterial.js';
 import { BloomCompositeMaterial } from '../../materials/BloomCompositeMaterial.js';
 import { SceneCompositeMaterial } from '../../materials/SceneCompositeMaterial.js';
-import { CompositeMaterial } from '../../materials/CompositeMaterial.js'
-import { delayedCall } from '../../tween/Tween.js';
-import { floorPowerOfTwo, lerp } from '../../utils/Utils.js';
-import { CameraMotionBlurMaterial } from '../../materials/CameraMotionBlurMaterial';
+// import { CompositeMaterial } from '../../materials/CompositeMaterial.js'
+// import { delayedCall } from '../../tween/Tween.js';
+// import { floorPowerOfTwo, lerp } from '../../utils/Utils.js';
+// import { CameraMotionBlurMaterial } from '../../materials/CameraMotionBlurMaterial';
 import { BlurMaterial } from '../../materials/BlurMaterial';
 import { TransitionMaterial} from'../../materials/TransitionMaterial.js';
 const BlurDirectionX = new Vector2(1, 0);
@@ -28,12 +27,13 @@ export class RenderManager {
         this.container = container;
         this.sections = container.children;
 
-        this.luminosityThreshold = 0.1;
+        this.luminosityThreshold = 0.9;
         this.luminositySmoothing = 1;
         this.bloomStrength = 0.3;
         this.bloomRadius = 0.2;
         this.animatedIn = false;
 
+        console.log(this.views)
         this.initRenderer();
 
         this.addListeners();
@@ -100,7 +100,7 @@ export class RenderManager {
 
         for (let i = 0, l = this.nMips; i < l; i++) {
             const factor = bloomFactors[i];
-            bloomFactors[i] = this.bloomStrength * lerp(factor, 1.2 - factor, this.bloomRadius);
+            bloomFactors[i] = this.bloomStrength * MathUtils.lerp(factor, 1.2 - factor, this.bloomRadius);
         }
 
         return bloomFactors;
@@ -119,6 +119,7 @@ export class RenderManager {
     /**
      * Public methods
      */
+
     static setView = index => {
         this.smooth.setScroll(index);
     };
@@ -221,6 +222,7 @@ export class RenderManager {
         renderer.setRenderTarget(null);
         renderer.render(this.screen, this.screenCamera);
     };
+
     static animateIn = () => {
         this.index1 = 0;
         this.index2 = 1;

@@ -66,7 +66,7 @@ export class HeaderInfo extends Interface {
     }
 
     addListeners() {
-        Stage.events.on(Events.COLOR_PICKER, this.onColorPicker);
+        //Stage.events.on(Events.COLOR_PICKER, this.onColorPicker);
         this.element.addEventListener('mouseenter', this.onHover);
         this.element.addEventListener('mouseleave', this.onHover);
         window.addEventListener('pointerdown', this.onPointerDown);
@@ -74,7 +74,7 @@ export class HeaderInfo extends Interface {
     }
 
     removeListeners() {
-        Stage.events.off(Events.COLOR_PICKER, this.onColorPicker);
+     //   Stage.events.off(Events.COLOR_PICKER, this.onColorPicker);
         this.element.removeEventListener('mouseenter', this.onHover);
         this.element.removeEventListener('mouseleave', this.onHover);
         window.removeEventListener('pointerdown', this.onPointerDown);

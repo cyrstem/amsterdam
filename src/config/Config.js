@@ -1,5 +1,5 @@
 export class Config {
-    static PATH = '/';
+    static PATH = ' ';
     static BREAKPOINT = 1000;
     static DEBUG = location.search === '?debug';
 

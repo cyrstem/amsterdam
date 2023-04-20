@@ -1,4 +1,5 @@
-import { Mesh,BoxGeometry,MeshStandardMaterial } from "three";
+import { Mesh,BoxGeometry,MeshStandardMaterial, Group ,RepeatWrapping,Color,Vector2,MathUtils } from "three";
+ import { WorldController } from "../controllers/world/WorldController";
 
 export class AbstractCube extends Group {
     constructor() {

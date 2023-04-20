@@ -1,5 +1,7 @@
 
-import { Group, Mesh,OctahedronGeometry,MeshStandardMaterial, Color,Vector2 } from "three";
+import { Group, Mesh,OctahedronGeometry,MeshStandardMaterial, Color,Vector2,RepeatWrapping } from "three";
+import { WorldController } from "../controllers/world/WorldController";
+
 export class FloatingCrystal extends Group {
     constructor() {
         super();
