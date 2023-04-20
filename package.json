@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "oimophysics": "saharan/OimoPhysics",
+    "@alienkitty/space.js": "alienkitty/space.js#dev",
     "three": "latest"
   },
   "devDependencies": {
