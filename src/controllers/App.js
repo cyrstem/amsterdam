@@ -1,22 +1,21 @@
 import { Config } from '../config/Config.js';
 import { Events } from '../config/Events.js';
 // import { Assets } from '../loaders/Assets.js';
-import { AssetLoader } from '../loaders/AssetLoader.js';
-
+import { AssetLoader } from '@alienkitty/space.js/three';
+import { Global } from '../config/Global.js';
 import { WorldController } from './world/WorldController.js';
-import { CameraController } from './world/CameraController.js';
+// import { CameraController } from './world/CameraController.js';
 import { SceneController } from './world/SceneController.js';
 
 import { RenderManager } from './world/RenderManager.js';
-import { PanelController } from './panel/PanelController.js';
+// import { PanelController } from './panel/PanelController.js';
 import { UI } from '../utils/ui/UI.js';
 import { Stage } from '../utils/Stage.js';
-// import { Data } from '../views/Data.js';
+// // import { Data } from '../views/Data.js';
 import { SceneView } from '../views/SceneView.js';
 import {Container} from '../utils/ui/Container.js';
-import { Global } from '../config/Global.js';
-import { Device } from '../config/Device.js';
 import { ticker } from '../tween/Ticker.js';
+
 
 export class App {
     static async init() {
@@ -47,7 +46,7 @@ export class App {
 
     static initLoader() {
         this.assetLoader = new AssetLoader();
-        this.assetLoader.setPath(Config.PATH);
+        this.assetLoader.load(Config.PATH);
     }
 
     static initStage() {
@@ -85,14 +84,14 @@ export class App {
     }
 
     static async loadData() {
-        const data = await this.assetLoader.loadData('assets/data/data.json');
+        const data = await this.assetLoader.loadData('/assets/data/data.json');
         console.log(data)
-        // data.pages.forEach(item => {
-        //     Global.SECTIONS.push(item);
+        data.pages.forEach(item => {
+            Global.SECTIONS.push(item);
 
-        // });
+        });
 
-        Data.init();
+       // Data.init();
     }
 
     static addListeners() {
@@ -127,7 +126,7 @@ export class App {
      * Public methods
      */
 
-    static animateIn = () => {
+    static start = () => {
         SceneController.animateIn();
         RenderManager.animateIn();
         this.ui.animateIn();

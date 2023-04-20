@@ -1,4 +1,4 @@
-export default fragmentTransitionShader /* glsl */ `
+export default /* glsl */ `
     precision highp float;
 
     uniform sampler2D tMap1;

@@ -1,13 +1,11 @@
 import { ACESFilmicToneMapping, BasicShadowMap, CineonToneMapping, LinearToneMapping, AmbientLight, Color, DirectionalLight, HemisphereLight, PerspectiveCamera, Scene, Uniform, Vector2, WebGLRenderer } from 'three';
 
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { Config } from '../../config/Config.js';
-import { TextureLoader } from '../../loaders/world/TextureLoader.js';
-import { EnvironmentTextureLoader } from '../../loaders/world/EnvironmentTextureLoader.js';
+import { AssetLoader } from '@alienkitty/space.js/three';
+import { EnvironmentTextureLoader } from '@alienkitty/space.js/three';
 import { BufferGeometryLoader } from '../../loaders/world/BufferGeometryLoader.js';
 import { Stage } from '../../utils/Stage.js';
-
+import { TextureLoader } from '@alienkitty/space.js/src/loaders/three/TextureLoader.js';
 import { getFrustum, getFullscreenTriangle } from '../../utils/world/Utils3D.js';
 
 export class WorldController {

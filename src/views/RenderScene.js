@@ -1,4 +1,6 @@
-import { AmbientLight,Color, HemisphereLight, DirectionalLight } from "three";
+import { AmbientLight,Color, HemisphereLight, DirectionalLight, Scene , WebGLRenderTarget } from "three";
+import { WorldController } from "../controllers/world/WorldController";
+
 
 export class RenderScene {
     constructor() {

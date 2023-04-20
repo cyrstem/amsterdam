@@ -1,4 +1,4 @@
-import { GLSL3, RawShaderMaterial,Vector2 } from "three";
+import { GLSL3, RawShaderMaterial,Vector2 ,NoBlending} from "three";
 
 import vertexTransitionShader from '../shaders/vertexTransitionShader.vert.js'
 import fragmentTransitionShader from "../shaders/fragmentTransitionShader.frag.js";

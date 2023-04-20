@@ -5,8 +5,8 @@ import { Assets } from '../loaders/Assets.js';
 import { MultiLoader } from '../loaders/MultiLoader.js';
 import { FontLoader } from '../loaders/FontLoader.js';
 import { AssetLoader } from '../loaders/AssetLoader.js';
-import { PreloaderView } from '../views/PreloaderView.js';
 import { Stage } from '../utils/Stage.js';
+import { PreloaderView } from '../views/PreloaderView.js';
 
 export class Preloader {
     static init() {
@@ -46,16 +46,16 @@ export class Preloader {
     static async initLoader() {
         this.view.animateIn();
 
-        let assets = Config.ASSETS;
+        let assets = Config.ASSETS.slice();
 
-        // if (Device.mobile) {
-        //     assets = assets.filter(path => !/desktop/.test(path));
-        // } else {
-        //     assets = assets.filter(path => !/mobile/.test(path));
-        // }
+        if (Device.mobile) {
+            assets = assets.filter(path => !/desktop/.test(path));
+        } else {
+            assets = assets.filter(path => !/mobile/.test(path));
+        }
 
         this.loader = new MultiLoader();
-        this.loader.load(new FontLoader());
+        this.loader.load(new FontLoader(['Roboto Mono']));
         this.loader.load(new AssetLoader(assets));
         this.loader.add(2);
 
@@ -90,6 +90,7 @@ export class Preloader {
         await this.view.animateOut();
         this.view = this.view.destroy();
 
-        this.app.animateIn();
+        // this.app.animateIn();
+        this.app.start();
     };
 }

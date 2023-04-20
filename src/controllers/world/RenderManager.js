@@ -1,8 +1,10 @@
-import { Mesh, OrthographicCamera, Scene, Vector2, WebGLRenderTarget, DepthTexture, Vector3, Matrix4 } from 'three';
+import { Mesh, OrthographicCamera, Scene, Vector2, WebGLRenderTarget, DepthTexture, Vector3, Matrix4 , MathUtils} from 'three';
 //add to control twee
 import { Device } from '../../config/Device.js';
 import { degToRad } from '../../utils/Utils.js';
 import { tween, clearTween } from '../../tween/Tween.js';
+import { SmoothViews } from '@alienkitty/space.js'
+import { Stage } from '../../utils/Stage.js';
 import { WorldController } from './WorldController.js';
 import { FXAAMaterial } from '../../materials/FXAAMaterial.js';
 import { LuminosityMaterial } from '../../materials/LuminosityMaterial.js';
@@ -15,7 +17,7 @@ import { delayedCall } from '../../tween/Tween.js';
 import { floorPowerOfTwo, lerp } from '../../utils/Utils.js';
 import { CameraMotionBlurMaterial } from '../../materials/CameraMotionBlurMaterial';
 import { BlurMaterial } from '../../materials/BlurMaterial';
-
+import { TransitionMaterial} from'../../materials/TransitionMaterial.js';
 const BlurDirectionX = new Vector2(1, 0);
 const BlurDirectionY = new Vector2(0, 1);
 

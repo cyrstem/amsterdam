@@ -1,6 +1,9 @@
 import { Interface } from "../Interface";
 import { Config } from "../../config/Config";
 import { Container } from "./Container";
+import { defer } from "../../tween/Tween";
+import { Stage } from "../Stage";
+
 
 export class Section extends Interface{
     constructor({title, index}){

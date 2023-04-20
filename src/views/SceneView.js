@@ -1,6 +1,7 @@
 import { BoxGeometry, Mesh, MeshStandardMaterial } from 'three';
 import { Component } from '../utils/Component.js';
 import { DarkPlanetScene } from './Scenes/DarkPlanetScene.js';
+
 // import { FloatingCrystalScene } from './Scenes/FloatingCrystalScene.js';
 // import { AbstractCubeScene } from './Scenes/AbstractCubeScene.js';
 
@@ -30,7 +31,7 @@ export class SceneView extends Component {
      */
 
      resize = (width, height) => {
-        this.darkPlanet.resize(width, height, dpr);
+        this.darkPlanet.resize(width, height);
         // this.floatingCrystal.resize(width, height, dpr);
         // this.abstractCube.resize(width, height, dpr);
     };

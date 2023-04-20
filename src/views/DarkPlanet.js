@@ -1,6 +1,9 @@
 
-import { Group ,Mesh,IcosahedronGeometry,MeshStandardMaterial,Color,Vector2 } from 'three';
+import { Group ,Mesh,IcosahedronGeometry,MeshStandardMaterial,Color,Vector2,RepeatWrapping} from 'three';
 import { Config } from '../config/Config';
+import { MathUtils } from 'three';
+import { WorldController } from '../controllers/world/WorldController';
+
 export class DarkPlanet extends Group{
     constructor() {
         super();
@@ -29,7 +32,7 @@ export class DarkPlanet extends Group{
         map.anisotropy = anisotropy;
         map.wrapS = RepeatWrapping;
         map.wrapT = RepeatWrapping;
-        map.repeat.set(2, 1);
+        //map.repeat.set(2, 1);
 
         normalMap.anisotropy = anisotropy;
         normalMap.wrapS = RepeatWrapping;
