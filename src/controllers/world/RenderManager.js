@@ -21,10 +21,10 @@ export class RenderManager {
         this.container = container;
         this.sections = container.children;
 
-        this.luminosityThreshold = 0.1;
+        this.luminosityThreshold = 0.0;
         this.luminositySmoothing = 1;
-        this.bloomStrength = 0.3;
-        this.bloomRadius = 0.2;
+        this.bloomStrength = 0.1;
+        this.bloomRadius = 0.0;
         this.animatedIn = false;
 
         //console.log(this.views)
@@ -106,7 +106,7 @@ export class RenderManager {
             root: Stage,
             container: this.container,
             sections: this.sections,
-            lerpSpeed: 0.075
+            lerpSpeed: 0.085
         });
     }
 

@@ -23,7 +23,7 @@ export class WorldController {
             powerPreference: 'high-performance',
             stencil: false,
             antialias: true,
-            // alpha:true,
+             alpha:true,
         });
         
         this.element = this.renderer.domElement;
