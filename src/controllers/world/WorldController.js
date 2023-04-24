@@ -41,6 +41,7 @@ export class WorldController {
         this.camera.near = 0.5;
         this.camera.far = 40;
         this.camera.position.z = 8;
+        
 
         // Global geometries
         this.screenTriangle = getFullscreenTriangle();

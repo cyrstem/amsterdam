@@ -17,6 +17,8 @@ export class RenderScene {
         // 3D scene
         this.scene = new Scene();
         this.scene.background = new Color(0xffffff);
+        this.camera.position.set(0, 6, 8);
+        this.camera.lookAt(this.scene.position);
 
         // Render targets
         this.renderTarget = new WebGLRenderTarget(1, 1);
