@@ -6,6 +6,7 @@ import { FloatingCrystalScene } from './Scenes/FloatingCrystalScene.js';
 import { AbstractCubeScene } from './Scenes/AbstractCubeScene.js';
 import { AbstractPlaneScene } from './Scenes/AbstractPlaneScene.js';
 import { NewModelScene } from './Scenes/NewModelScene.js';
+import { GltfModelScene} from './Scenes/GltfModelScene.js';
 
 
 export class SceneView extends Component {
@@ -30,6 +31,9 @@ export class SceneView extends Component {
 
         this.newModel = new NewModelScene()
         this.add(this.newModel);
+
+        this.gltfModel = new GltfModelScene()
+        this.add(this.gltfModel)
     }
 
    
@@ -44,6 +48,7 @@ export class SceneView extends Component {
         this.abstractCube.resize(width, height, dpr);
         this.abstractPlane.resize(width,height,dpr);
         this.newModel.resize(width, height, dpr);
+        this.gltfModel.resize(width,height,dpr);
     };
 //need to figure it out how to pass time
     update = time => {
@@ -52,6 +57,7 @@ export class SceneView extends Component {
         this.abstractCube.update(time);
         this.abstractPlane.update(time);
         this.newModel.update(time);
+        this.gltfModel.update(time);
     };
 
     ready = () => Promise.all([
@@ -59,6 +65,7 @@ export class SceneView extends Component {
         this.floatingCrystal.ready(),
         this.abstractCube.ready(),
         this.abstractPlane.ready(),
-        this.newModel.ready()
+        this.newModel.ready(),
+        this.gltfModel.ready()
     ]);
 }

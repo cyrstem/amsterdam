@@ -12,7 +12,7 @@ export class NewModel extends Group{
         this.rotation.z = MathUtils.degToRad(25);
     }
     async initMesh() {
-        const { anisotropy, loadTexture } = WorldController;
+        const { anisotropy, loadTexture, loadResource } = WorldController;
 
         const geometry = new IcosahedronGeometry(0.6, 12);
 

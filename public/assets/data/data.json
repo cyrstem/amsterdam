@@ -19,6 +19,10 @@
         {
             "path": "new_model/",
             "title": "New Model"
+        },
+        {
+            "path": "gltf_model/",
+            "title": "GLTF Model"
         }
     ]
 }

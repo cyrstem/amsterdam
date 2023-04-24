@@ -29,5 +29,8 @@ export class Container extends Interface {
 
         this.newModel= new Section(Global.SECTIONS[4]);
         this.add(this.newModel);
+
+        this.gltfModel= new Section(Global.SECTIONS[5]);
+        this.add(this.gltfModel);
     }
 }

@@ -2,6 +2,7 @@ import { ACESFilmicToneMapping, BasicShadowMap, CineonToneMapping, LinearToneMap
 
 import { Config } from '../../config/Config.js';
 import { AssetLoader } from '@alienkitty/space.js/three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { EnvironmentTextureLoader } from '@alienkitty/space.js/three';
 import { BufferGeometryLoader } from '../../loaders/world/BufferGeometryLoader.js';
 import { Stage } from '../../utils/Stage.js';
@@ -61,10 +62,12 @@ export class WorldController {
     static initLoaders() {
 
         this.textureLoader = new TextureLoader();
+        this.gltfLoader = new GLTFLoader();
         this.textureLoader.setPath(Config.PATH);
 
         this.environmentLoader = new EnvironmentTextureLoader(this.renderer);
         this.environmentLoader.setPath(Config.PATH);
+
     }
 
 
@@ -107,4 +110,6 @@ export class WorldController {
     static loadTexture = path => this.textureLoader.loadAsync(path);
 
     static loadEnvironmentTexture = path => this.environmentLoader.loadAsync(path);
+
+    static loadResource = path =>this.gltfLoader.loadAsync(path);
 }
