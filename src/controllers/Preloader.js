@@ -91,6 +91,6 @@ export class Preloader {
         this.view = this.view.destroy();
 
         this.app.animateIn();
-        //this.app.start();
+        // this.app.start();
     };
 }

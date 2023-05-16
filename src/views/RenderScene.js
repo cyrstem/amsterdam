@@ -1,6 +1,6 @@
 import { AmbientLight,Color, HemisphereLight, DirectionalLight, Scene , WebGLRenderTarget } from "three";
 import { WorldController } from "../controllers/world/WorldController";
-
+import { InputManager } from "../controllers/world/InputManager";
 export class RenderScene {
     constructor() {
         this.initRenderer();

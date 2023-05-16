@@ -1,9 +1,10 @@
 import { Mesh,BoxGeometry,MeshStandardMaterial, Group ,RepeatWrapping,Color,Vector2,MathUtils, PlaneGeometry } from "three";
  import { WorldController } from "../controllers/world/WorldController";
-
+ import { InputManager } from '../controllers/world/InputManager';
 export class AbstractPlane extends Group {
     constructor() {
         super();
+        this.addListeners();
     }
 
     async initMesh() {
@@ -56,11 +57,20 @@ export class AbstractPlane extends Group {
         this.mesh = mesh;
     }
 
+    addListeners(){
+        InputManager.onPointerDown('pointerdown', this.onPointerDown);
+        //this.element.addEventListener('click', this.onClick);
+        
+    }
+
+    onPointerDown(){
+        console.log('tttt')
+    } 
     /**
      * Public methods
      */
 
     update = () => {
-        this.mesh.rotation.y += 0.001;
+        this.mesh.rotation.z += 0.001;
     };
 }

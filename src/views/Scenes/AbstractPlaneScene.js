@@ -10,15 +10,20 @@ export class AbstractPlaneScene extends RenderScene{
         this.scene.visible = false;
 
         this.initViews();
+       
     }
     initViews(){
         this.abstractPlane= new AbstractPlane();
         this.scene.add(this.abstractPlane);
+        
     }
 
     /**
      * Public methods
      */
+    
+    
+
     update = time => {
         if (!this.scene.visible) {
             return;
@@ -28,6 +33,8 @@ export class AbstractPlaneScene extends RenderScene{
 
         super.update();
     };
+
+  
 
     ready = async () => {
         await Promise.all([

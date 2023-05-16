@@ -5,7 +5,6 @@ import { Global } from '../config/Global.js';
 import { WorldController } from './world/WorldController.js';
 // import { CameraController } from './world/CameraController.js';
 import { SceneController } from './world/SceneController.js';
-
 import { RenderManager } from './world/RenderManager.js';
 import { PanelController } from './panel/PanelController.js';
 import { UI } from '../utils/ui/UI.js';
@@ -14,6 +13,7 @@ import { Data } from '../views/Data.js';
 import { SceneView } from '../views/SceneView.js';
 import {Container} from '../utils/ui/Container.js';
 import { ticker } from '../tween/Ticker.js';
+
 
 
 export class App {
@@ -71,7 +71,7 @@ export class App {
 
     static initControllers() {
         const { renderer } = WorldController;
-
+        
         SceneController.init(this.view);
         RenderManager.init(renderer, this.view, this.container);
     }
