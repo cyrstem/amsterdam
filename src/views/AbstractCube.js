@@ -1,5 +1,5 @@
-import { Mesh,BoxGeometry,MeshStandardMaterial, Group ,RepeatWrapping,Color,Vector2,MathUtils } from "three";
- import { WorldController } from "../controllers/world/WorldController";
+import { Mesh, BoxGeometry, MeshStandardMaterial, Group, RepeatWrapping, Color, Vector2, MathUtils } from "three";
+import { WorldController } from "../controllers/world/WorldController";
 
 export class AbstractCube extends Group {
     constructor() {
@@ -54,6 +54,22 @@ export class AbstractCube extends Group {
 
         this.mesh = mesh;
     }
+     /**
+     * Event handlers
+     */
+
+     onHover = ({ type }) => {
+        console.log('AbstractCube', type);
+        // if (type === 'over') {
+        // } else {
+        // }
+    };
+
+    onClick = () => {
+        console.log('AbstractCube', 'click');
+        // open('https://alien.js.org/');
+    };
+
 
     /**
      * Public methods

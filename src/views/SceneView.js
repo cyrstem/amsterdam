@@ -7,7 +7,7 @@ import { AbstractCubeScene } from './Scenes/AbstractCubeScene.js';
 import { AbstractPlaneScene } from './Scenes/AbstractPlaneScene.js';
 import { NewModelScene } from './Scenes/NewModelScene.js';
 import { GltfModelScene} from './Scenes/GltfModelScene.js';
-
+import { InputManager } from '../controllers/world/InputManager.js';
 
 export class SceneView extends Component {
     constructor() {
@@ -36,7 +36,13 @@ export class SceneView extends Component {
         this.add(this.gltfModel)
     }
 
-   
+    addListeners() {
+        InputManager.add(this.darkPlanet, this.floatingCrystal, this.abstractCube);
+    }
+
+    removeListeners() {
+        InputManager.remove(this.darkPlanet, this.floatingCrystal, this.abstractCube);
+    }
 
     /**
      * Public methods
@@ -60,6 +66,9 @@ export class SceneView extends Component {
         this.gltfModel.update(time);
     };
 
+    animateIn = () => {
+        this.addListeners();
+    };
     ready = () => Promise.all([
         this.darkPlanet.ready(),
         this.floatingCrystal.ready(),

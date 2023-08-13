@@ -65,6 +65,23 @@ export class FloatingCrystal extends Group {
 
         this.mesh = mesh;
     }
+     /**
+     * Event handlers
+     */
+
+     onHover = ({ type }) => {
+        console.log('AbstractCube', type);
+        // if (type === 'over') {
+        // } else {
+        // }
+    };
+
+    onClick = () => {
+        console.log('AbstractCube', 'click');
+        // open('https://alien.js.org/');
+    };
+
+
 
     /**
      * Public methods

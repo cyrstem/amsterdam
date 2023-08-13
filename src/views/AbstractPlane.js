@@ -4,7 +4,7 @@ import { Mesh,BoxGeometry,MeshStandardMaterial, Group ,RepeatWrapping,Color,Vect
 export class AbstractPlane extends Group {
     constructor() {
         super();
-        this.addListeners();
+       
     }
 
     async initMesh() {
@@ -56,16 +56,23 @@ export class AbstractPlane extends Group {
 
         this.mesh = mesh;
     }
+ /**
+     * Event handlers
+     */
 
-    addListeners(){
-        InputManager.onPointerDown('pointerdown', this.onPointerDown);
-        //this.element.addEventListener('click', this.onClick);
-        
-    }
+ onHover = ({ type }) => {
+    console.log('AbstractCube', type);
+    // if (type === 'over') {
+    // } else {
+    // }
+};
 
-    onPointerDown(){
-        console.log('tttt')
-    } 
+onClick = () => {
+    console.log('AbstractCube', 'click');
+    // open('https://alien.js.org/');
+};
+
+
     /**
      * Public methods
      */

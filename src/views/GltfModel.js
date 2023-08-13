@@ -10,7 +10,7 @@ export class GltfModel extends Group{
         const { anisotropy, loadTexture , loadResource} = WorldController;
          const resource = await loadResource ('assets/models/Fox.gltf');
         const model = resource.scene.children[0];
-        console.log('this is the model',model)
+        //console.log('this is the model',model)
 
         this.mixer = new AnimationMixer(resource.scene)
 

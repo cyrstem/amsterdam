@@ -1,12 +1,18 @@
-import { Raycaster, Vector2 } from 'three';
+import { Raycaster, Vector2, Mesh,MeshBasicMaterial } from 'three';
 
 import { Device } from '../../config/Device.js';
 import { Stage } from '../../utils/Stage.js';
 
-export class InputManager {
-    static init(camera) {
-        this.camera = camera;
+import { Config } from '../../config/Config.js';
+// import { Layer } from '../../config/Layer.js';
+import { WorldController } from './WorldController.js';
+import { CameraController } from './CameraController.js';
 
+export class InputManager {
+    static init(scene,camera,controls) {
+        this.scene = scene;
+        this.camera = camera;
+        this.controls = controls;
         this.objects = [];
         this.raycaster = new Raycaster();
         this.mouse = new Vector2(-1, -1);
@@ -21,6 +27,25 @@ export class InputManager {
 
         this.addListeners();
     }
+    static initMesh() {
+        const { quad } = WorldController;
+
+        let material;
+
+        if (Config.DEBUG) {
+            material = new MeshBasicMaterial({
+                color: 0xff0000,
+                wireframe: true
+            });
+        } else {
+            material = new MeshBasicMaterial({ visible: false });
+        }
+
+        this.dragPlane = new Mesh(quad, material);
+        this.dragPlane.scale.multiplyScalar(200);
+        this.dragPlane.layers.enable(Layer.PICKING);
+    }
+
 
     static addListeners() {
         window.addEventListener('pointerdown', this.onPointerDown);

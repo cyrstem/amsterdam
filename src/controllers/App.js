@@ -3,8 +3,11 @@ import { Events } from '../config/Events.js';
 import { AssetLoader } from '@alienkitty/space.js/three';
 import { Global } from '../config/Global.js';
 import { WorldController } from './world/WorldController.js';
-// import { CameraController } from './world/CameraController.js';
+
+import { CameraController } from './world/CameraController.js';
+
 import { SceneController } from './world/SceneController.js';
+import { InputManager } from './world/InputManager.js';
 import { RenderManager } from './world/RenderManager.js';
 import { PanelController } from './panel/PanelController.js';
 import { UI } from '../utils/ui/UI.js';
@@ -60,6 +63,9 @@ export class App {
 
     static initViews() {
          this.view = new SceneView();
+         console.log(WorldController.scene)
+        //  WorldController.scene.add(this.view);
+
 
         this.container = new Container();
         Stage.add(this.container);
@@ -70,10 +76,11 @@ export class App {
     }
 
     static initControllers() {
-        const { renderer } = WorldController;
-        
+        const { renderer,scene, camera, controls } = WorldController;
+        CameraController.init(camera,controls);
         SceneController.init(this.view);
-        RenderManager.init(renderer, this.view, this.container);
+        InputManager.init(scene,camera,controls)
+        RenderManager.init(renderer,scene, this.view, this.container,camera);
     }
 
 
@@ -116,6 +123,8 @@ export class App {
     static onUpdate = (time, delta, frame) => {
         WorldController.update(time, delta, frame);
         SceneController.update(time);
+        CameraController.update();
+        InputManager.update(time);
         RenderManager.update(time, delta, frame);
         this.ui.update();
 
@@ -126,6 +135,7 @@ export class App {
      */
 
     static animateIn = () => {
+        SceneController.animateIn();
         SceneController.animateIn();
         RenderManager.animateIn();
         this.ui.animateIn();

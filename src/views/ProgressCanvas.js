@@ -65,7 +65,7 @@ export class ProgressCanvas extends Interface {
     };
 
     onProgress = ({ progress }) => {
-        console.log(progress*100)
+        //console.log(progress*100)
         this.text('hello',progress);
         clearTween(this);
 
